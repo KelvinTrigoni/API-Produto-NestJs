@@ -21,7 +21,6 @@ export class ProdutosService {
                     .then(snapshot => {
                         _.each(snapshot.val(), (i, ind) => {
                             if (i != null) {
-                                // console.log(ind);
                                 list.push(i);
                             }
                         });

@@ -26,6 +26,9 @@
     "@nestjs/jwt": "^7.2.0",
     "@nestjs/passport": "^7.1.5",
     "@nestjs/platform-express": "^7.5.1",
+    "@nestjs/swagger": "^4.7.12",
+    "class-transformer": "^0.3.2",
+    "class-validator": "^0.13.1",
     "firebase": "^8.2.3",
     "guid-typescript": "^1.0.9",
     "passport": "^0.4.1",
@@ -34,6 +37,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.3",
+    "swagger-ui-express": "^4.1.6",
     "underscore": "^1.12.0"
   },
   "devDependencies": {

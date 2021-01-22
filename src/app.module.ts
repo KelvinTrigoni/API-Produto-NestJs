@@ -9,8 +9,8 @@ import { ProdutosController } from './controllers/produtos/produtos.controller';
 import { ProdutosService } from './services/produtos/produtos.service';
 import { AuthController } from './controllers/token/auth.controller';
 import { AuthService } from './services/token/auth.service';
-import { TokenAuthGuard } from './token-auth.guard';
-import { JwtStrategy } from './jwt.strategy';
+import { TokenAuthGuard } from './jwt/token-auth.guard';
+import { JwtStrategy } from './jwt/jwt.strategy';
 
 @Module({
   imports: [

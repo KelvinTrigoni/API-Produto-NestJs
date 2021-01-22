@@ -1,9 +1,14 @@
 import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseGuards } from '@nestjs/common';
 
-import { TokenAuthGuard } from 'src/token-auth.guard';
+import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
+
+import { TokenAuthGuard } from 'src/jwt/token-auth.guard';
 import { Produto } from 'src/models/produto.model';
 import { ProdutosService } from "src/services/produtos/produtos.service";
 
+@ApiBearerAuth()
+@ApiTags('Produtos')
+@UseGuards(TokenAuthGuard)
 @Controller('produtos')
 export class ProdutosController {
 
@@ -11,32 +16,32 @@ export class ProdutosController {
         private produtosServices: ProdutosService
     ) { }
 
-    @UseGuards(TokenAuthGuard)
     @Get()
+    @ApiOperation({ summary: 'Retorna todos os produtos' })
     getProdutos(): Promise<Array<Produto>> {
         return this.produtosServices.getPodutos();
     }
 
-    @UseGuards(TokenAuthGuard)
     @Get(':id')
+    @ApiOperation({ summary: 'Retorna um produto específico' })
     getProdutosById(@Param('id') id: string): Promise<Produto> {
         return this.produtosServices.getPodutosById(id);
     }
 
-    @UseGuards(TokenAuthGuard)
     @Post()
+    @ApiOperation({ summary: 'Cria um produto', description: 'Criação não precisa de id' })
     postProdutos(@Body() produto: Produto): Promise<any> {
         return this.produtosServices.postPodutos(produto);
     }
 
-    @UseGuards(TokenAuthGuard)
     @Put()
+    @ApiOperation({ summary: 'Altera um produto' })
     putProduto(@Body() produto: Produto): Promise<any> {
         return this.produtosServices.putProduto(produto);
     }
 
-    @UseGuards(TokenAuthGuard)
     @Delete(':id')
+    @ApiOperation({ summary: 'Exclui um produto' })
     deleteProduto(@Param('id') id: string): Promise<any> {
         return this.produtosServices.deleteProduto(id);
     }
